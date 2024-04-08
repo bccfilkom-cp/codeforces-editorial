@@ -7,12 +7,12 @@ Repository for all codeforces editorial made by BCC FILKOM CP Staff
 
 ## 📊 Rating List
 
-### 1. [800 Rated Editorial](./0800/)
-### 2. [900 Rated Editorial](./0900/)
-### 3. [1000 Rated Editorial](./1000/)
-### 4. [1100 Rated Editorial](./1100/)
-### 5. [1200 Rated Editorial](./1200/)
-### 6. [1300 Rated Editorial](./1300/)
+#### 1. [800 Rated Editorial](./0800/)
+#### 2. [900 Rated Editorial](./0900/)
+#### 3. [1000 Rated Editorial](./1000/)
+#### 4. [1100 Rated Editorial](./1100/)
+#### 5. [1200 Rated Editorial](./1200/)
+#### 6. [1300 Rated Editorial](./1300/)
 
 ## 📝 Convention
 

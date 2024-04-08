@@ -1,16 +1,19 @@
 \documentclass{article}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{xcolor}
 
 % Example : https://codeforces.com/problemset/problem/266/A 
 % So the title would be 266A - Stones on the Table
-\title{ProblemCode - ProblemName} 
+\title{1339A - Filling Diamonds} 
 
 % Author must be your full name
-\author{Your Fullname} 
+\author{Devan Ferrel} 
 
 % Date is when you create this report
-\date{Date}
+\date{8 April 2024}
 
 \begin{document}
 
@@ -21,16 +24,22 @@
 % Problem section contains hyperlink to the problem
 \section{Problem}
 
-Problem Description : \href{https://codeforces.com/problemset/problem/266/A}{problem}
+Problem Description : \href{https://codeforces.com/contest/1339/problem/A}{https://codeforces.com/contest/1339/problem/A}
 
 % Objective section contains what is the problem's objective
 \section{Objective}
 
+Given an integer $n$, we have to calculate how many ways to fully cover belt like area of $4n - 2$ triagles with diamond shapes. In this problem, diamond shape consists of 2 triangles.
+
 % Solution section contains how you approch the problem and your solution
 \section{Solution}
 
+To fully cover it, we just $n$ times. You can look up for the picture in the problem, and notice that there are $n$ ways to fully cover belt like area of $4n - 2$ triagles
 % Code section contains your solution code
+
+\newpage
 \section{Code}
+
 
 \lstset{language=C++,
         basicstyle=\ttfamily,
@@ -40,6 +49,22 @@ Problem Description : \href{https://codeforces.com/problemset/problem/266/A}{pro
         morecomment=[l][\color{magenta}]{\#}
 }
 \begin{lstlisting}
+
+#include <bits/stdc++.h>
+
+int main(){
+    fastio
+
+    int t;
+    cin >> t;
+
+    while(t--) {
+        ll n; cin >> n;
+        cout << n << endl;
+    }
+
+    return 0;
+}
 
 \end{lstlisting}
 

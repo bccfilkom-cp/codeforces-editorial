@@ -1,0 +1,74 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{xcolor}
+
+
+\title{43A - Football} 
+
+% Author must be your full name
+\author{Devan Ferrel} 
+
+% Date is when you create this report
+\date{8 April 2024}
+
+\begin{document}
+
+\maketitle
+
+% There are 4 Sections, Problem, Objective, Solution, Code
+
+% Problem section contains hyperlink to the problem
+\section{Problem}
+
+Problem Description : \href{https://codeforces.com/problemset/problem/43/A}{https://codeforces.com/problemset/problem/43/A}
+
+% Objective section contains what is the problem's objective
+\section{Objective}
+
+Given $n$ strings and each string indicates the name of the team that scores a goal, find name of the team that that has the most goals
+
+% Solution section contains how you approch the problem and your solution
+\section{Solution}
+
+Since the input is string, we can just use a hashmap and use the value of the string as key, and increment the value of the key everytime. After that, we just do a simple check if the value of the the key is greater than the current max value, then we assign the value of the key to the current max value and assign the key to the winner.
+% Code section contains your solution code
+
+\newpage
+\section{Code}
+
+
+\lstset{language=C++,
+        basicstyle=\ttfamily,
+        keywordstyle=\color{blue}\ttfamily,
+        stringstyle=\color{red}\ttfamily,
+        commentstyle=\color{green}\ttfamily,
+        morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+    map<string,int> tim;
+    string s,tem;
+    int n,res = INT_MIN;
+    cin >> n;
+    while(n--){
+        cin >> s;
+        tim[s]++;
+        if(tim[s] > res){
+            res = tim[s];
+            tem = s;
+        }
+    }
+    cout << tem << "\n";
+    return 0;
+}
+\end{lstlisting}
+
+\end{document}

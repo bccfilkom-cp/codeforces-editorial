@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
+public class Devan1873F {
     public static void main(String[] args){ 
         Scanner in = new Scanner(System.in);
         int t = in.nextInt();
@@ -44,5 +44,6 @@ public class Main {
             len = Math.max(len, r - l + 1);
             System.out.println(len);
         }
+        in.close();
     }
 }

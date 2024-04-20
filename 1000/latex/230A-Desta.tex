@@ -1,0 +1,77 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{xcolor} % Required for color definitions
+\usepackage{listings} % Required for code listing
+
+\title{Dragons}
+\author{Ferrel Desta}
+\date{21 April 2024}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem}
+
+Problem Description: \href{https://codeforces.com/problemset/problem/230/A}
+
+\section{Objective}
+
+The objective is to determine whether Kirito can defeat all the dragons on the level without losing any duels. Kirito wins a duel if his strength is greater than the dragon's strength.
+
+\section{Solution}
+
+We can start by sorting the dragons based on their strength in ascending order. This ensures that Kirito faces the weakest dragons first. Then, we iterate through each dragon in the weakest dragons order. For each dragon, we check if Kirito's strength is greater than the dragon's strength. If during the iteration we encounter dragons that are stronger, we immediately output "NO". If the loop completes without being broken, we output "YES".
+
+\newpage
+\section{Code}
+
+\lstset{language=C++,
+        basicstyle=\ttfamily,
+        keywordstyle=\color{blue}\ttfamily,
+        stringstyle=\color{green}\ttfamily,
+        commentstyle=\color{green}\ttfamily,
+        morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+#include <bits/stdc++.h>
+#define fastio ios_base::sync_with_stdio(false); cin.tie(NULL);
+using namespace std;
+
+struct Dragon {
+    int strength;
+    int bonus;
+};
+
+bool compareStrength(const Dragon& d1, const Dragon& d2) {
+    return d1.strength < d2.strength;
+}
+
+int main() {
+    fastio;
+    int s, n;
+    cin >> s >> n;
+
+    Dragon dragons[n];
+    for (int i = 0; i < n; ++i) {
+        cin >> dragons[i].strength >> dragons[i].bonus;
+    }
+
+    sort(dragons, dragons + n, compareStrength);
+
+    for (int i = 0; i < n; ++i) {
+        if (s > dragons[i].strength) {
+            s += dragons[i].bonus;
+        } else {
+            cout << "NO" << endl;
+            return 0;
+        }
+    }
+
+    cout << "YES" << endl;
+
+    return 0;
+}
+\end{lstlisting}
+
+\end{document}

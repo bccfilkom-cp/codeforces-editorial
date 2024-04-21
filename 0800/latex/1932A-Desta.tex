@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{xcolor} % Required for color definitions
+\usepackage{listings} % Required for code listing
+
+\title{Thorns and Coins}
+\author{Ferrel Desta}
+\date{21 April 2024}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem}
+
+Problem Description: \href{https://codeforces.com/problemset/problem/1932/A}
+
+\section{Objective}
+
+The objective is to find the maximum number of coins that can be collected while traversing a path with thorns and coins. The path can be traversed by moving one or two cells at a time, but thorny cells cannot be stepped on.
+
+\section{Solution}
+
+Iterate through the path. For each cell: 1. If the cell contains a coin ('@'), increment the count of collected coins. 2. If the cell contains thorns ('*'), check the next cell. If it also contains thorns, break the loop since it's not possible to proceed further without stepping on thorns.
+
+\newpage
+\section{Code}
+
+\lstset{language=C++,
+        basicstyle=\ttfamily,
+        keywordstyle=\color{blue}\ttfamily,
+        stringstyle=\color{green}\ttfamily,
+        commentstyle=\color{green}\ttfamily,
+        morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+#include <bits/stdc++.h>
+#define fastio ios_base::sync_with_stdio(false); cin.tie(NULL);
+using namespace std;
+
+int solve(char path[], int n) {
+    int ans = 0;
+    for(int i = 0; i < n; i++){
+        if(path[i]=='@') ans++;
+        else if (path[i]=='*'){
+            if(path[i+1]=='*') break;
+        }
+    }
+    return ans;
+}
+
+int main(){
+    fastio;
+    int t;
+    cin >> t;
+
+
+    while(t--){
+        int n;
+        cin >> n;
+        char path[n];
+        for(int i = 0; i < n; i++){
+            cin >> path[i];
+        }
+        cout << solve(path, n) << endl;
+    }
+
+    return 0;
+}
+\end{lstlisting}
+
+\end{document}

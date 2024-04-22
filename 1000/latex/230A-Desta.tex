@@ -1,27 +1,41 @@
 \documentclass{article}
 \usepackage{graphicx} % Required for inserting images
-\usepackage{xcolor} % Required for color definitions
-\usepackage{listings} % Required for code listing
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
 
-\title{Dragons}
-\author{Ferrel Desta}
+% Example : https://codeforces.com/problemset/problem/266/A 
+% So the title would be 266A - Stones on the Table
+\title{230A - Dragons} 
+
+% Author must be your full name
+\author{Ferrel Destatiananda Edwardo} 
+
+% Date is when you create this report
 \date{21 April 2024}
 
 \begin{document}
 
 \maketitle
 
+% There are 4 Sections, Problem, Objective, Solution, Code
+
+% Problem section contains hyperlink to the problem
 \section{Problem}
 
-Problem Description: \href{https://codeforces.com/problemset/problem/230/A}
+Problem Description : \href{https://codeforces.com/problemset/problem/230/A}{https://codeforces.com/problemset/problem/230/A}
 
+% Objective section contains what is the problem's objective
 \section{Objective}
 
 The objective is to determine whether Kirito can defeat all the dragons on the level without losing any duels. Kirito wins a duel if his strength is greater than the dragon's strength.
 
+% Solution section contains how you approch the problem and your solution
 \section{Solution}
 
-We can start by sorting the dragons based on their strength in ascending order. This ensures that Kirito faces the weakest dragons first. Then, we iterate through each dragon in the weakest dragons order. For each dragon, we check if Kirito's strength is greater than the dragon's strength. If during the iteration we encounter dragons that are stronger, we immediately output "NO". If the loop completes without being broken, we output "YES".
+We can start by sorting the dragons based on their strength in ascending order. This ensures that Kirito faces the weakest dragons first. Then, we iterate through each dragon in the weakest dragons order. For each dragon, we check if Kirito's strength is greater than the dragon's strength. If during the iteration we encounter dragons that are stronger, we immediately output "NO". If the loop completes without being broken, 
+
+% Code section contains your solution code
 
 \newpage
 \section{Code}
@@ -29,7 +43,7 @@ We can start by sorting the dragons based on their strength in ascending order. 
 \lstset{language=C++,
         basicstyle=\ttfamily,
         keywordstyle=\color{blue}\ttfamily,
-        stringstyle=\color{green}\ttfamily,
+        stringstyle=\color{red}\ttfamily,
         commentstyle=\color{green}\ttfamily,
         morecomment=[l][\color{magenta}]{\#}
 }
@@ -72,6 +86,7 @@ int main() {
 
     return 0;
 }
+
 \end{lstlisting}
 
 \end{document}

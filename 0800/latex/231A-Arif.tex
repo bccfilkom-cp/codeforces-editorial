@@ -1,0 +1,74 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+
+% Example : https://codeforces.com/problemset/problem/266/A 
+% So the title would be 266A - Stones on the Table
+\title{231A -  Team} 
+
+% Author must be your full name
+\author{Muhammad Arif Rifki} 
+
+% Date is when you create this report
+\date{17 April 2024}
+
+\begin{document}
+
+\maketitle
+
+% There are 4 Sections, Problem, Objective, Solution, Code
+
+% Problem section contains hyperlink to the problem
+\section{Problem}
+
+Problem Description : \href{https://codeforces.com/problemset/problem/231/A}{https://codeforces.com/problemset/problem/231/A}
+
+% Objective section contains what is the problem's objective
+\section{Objective}
+
+The meaning of this question is, there are 3 people, and each person will try to find the solution to the $n$ problem given, if more than 1 person can find the solution then they will answer the question, how many questions are there? become? answer. 1 is a sign that a solution has been found, and 0 is not found. each row represents a question.
+% Solution section contains how you approch the problem and your solution
+\section{Solution}
+
+$n$ = 3 (number of question(lines)).
+\\1 1 0
+\\1 1 1
+\\1 0 0
+\\in line number 1 and 2, the are more than 1 number 1, so the answer is 2.
+
+
+% Code section contains your solution code
+
+\newpage
+\section{Code}
+
+\lstset{language=C++,
+        basicstyle=\ttfamily,
+        keywordstyle=\color{blue}\ttfamily,
+        stringstyle=\color{red}\ttfamily,
+        commentstyle=\color{green}\ttfamily,
+        morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int x, cnt = 0, a, b, c;
+    cin >> x;
+    for (int i = 0; i < x; i++)
+    {
+        cin >> a >> b >> c;
+        int temp = a + b + c;
+        if (temp > 1)
+            cnt++;
+    }
+    cout << cnt;
+    return 0;
+}
+
+\end{lstlisting}
+
+\end{document}

@@ -23,7 +23,7 @@ Repository for all codeforces editorial made by BCC FILKOM CP Staff
     - pdf file should be stored in ```pdf folder```
     - latex file should be stored in ```latex folder```
     - source code file should be stored in ```code``` folder
-5. Commit message should be ```(your nickname) add : (ProblemCode)```. For example : ```(Devan) add : 1339A```
+5. Commit message should be ```(your nickname) add : (ProblemCode) to (Rating) Folder```. For example : ```(Devan) add : 1339A to 800 Folder```
 
 ## 🙌 Contribution
 

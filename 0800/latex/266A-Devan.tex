@@ -1,0 +1,91 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+
+% Example : https://codeforces.com/problemset/problem/266/A 
+% So the title would be 266A - Stones on the Table
+\title{266A - Stones on the Table} 
+
+% Author must be your full name
+\author{Devan Ferrel} 
+
+% Date is when you create this report
+\date{8 April 2024}
+
+\begin{document}
+
+\maketitle
+
+% There are 4 Sections, Problem, Objective, Solution, Code
+
+% Problem section contains hyperlink to the problem
+\section{Problem}
+
+Problem Description : \href{https://codeforces.com/problemset/problem/266/A}{https://codeforces.com/problemset/problem/266/A}
+
+% Objective section contains what is the problem's objective
+\section{Objective}
+
+The objective of this problem is literally simple, we just have to count the minimum number of stones we have to remove from the string 
+so that any neighboring stones had different colors.
+
+Example : 
+
+$s$ = RRRG
+
+In the string $s$, $s_1$ has same color as $s_0$, so we remove it from the string and the string will look like
+
+$s$ = RRG
+
+This time, the new $s_1$ also has same color as $s_0$, so we remove it from the string and the result would be 
+
+$s$ = RG
+
+Since theres is no any neighboring characters in $s_0$ that has same color as $s_0$, we dont have to remove any character from string $s$ anymore, so the answer is 2
+
+% Solution section contains how you approch the problem and your solution
+\section{Solution}
+
+We can use sliding window technique for this problem.
+Firstly, we create a variable $l$, initially it points to index 0 and then we start the loop from 1 to $n$. We compare $s_l$ with $s_i$ and if they are same, then we increment the counter $c$, else we move the pointer $l$ to $i$. 
+
+% Code section contains your solution code
+
+\newpage
+\section{Code}
+
+\lstset{language=C++,
+        basicstyle=\ttfamily,
+        keywordstyle=\color{blue}\ttfamily,
+        stringstyle=\color{red}\ttfamily,
+        commentstyle=\color{green}\ttfamily,
+        morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+
+#include <bits/stdc++.h>
+
+int main(){
+    fastio
+    int n,l=0,c=0;
+    string s;
+    cin >> n >> s;
+
+    for(int i = 1; i < n; i++) {
+        if(s[i] == s[l]) {
+            c++;
+        } else {
+            l = i;
+        }
+    }
+
+    cout << c;
+
+    return 0;
+}
+
+\end{lstlisting}
+
+\end{document}

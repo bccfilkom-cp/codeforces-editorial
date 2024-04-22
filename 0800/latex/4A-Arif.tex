@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+
+% Example : https://codeforces.com/problemset/problem/266/A 
+% So the title would be 266A - Stones on the Table
+\title{4A -  Watermelon} 
+
+% Author must be your full name
+\author{Muhammad Arif Rifki} 
+
+% Date is when you create this report
+\date{17 April 2024}
+
+\begin{document}
+
+\maketitle
+
+% There are 4 Sections, Problem, Objective, Solution, Code
+
+% Problem section contains hyperlink to the problem
+\section{Problem}
+
+Problem Description : \href{https://codeforces.com/problemset/problem/4/A}{https://codeforces.com/problemset/problem/4/A}
+
+% Objective section contains what is the problem's objective
+\section{Objective}
+
+The aim of this problem is actually simple, we will get a watermelon with weight n, so we have to decide whether the watermelon can be split into two parts. As a rule, each of the two parts of the watermelon must have an even number of kilograms. return "YES" if the rule applies, and return "NO" if it cannot.
+
+Example : 
+
+$n$ = 8.
+
+So the Solution is "YES", because this 8 is can split into two parts like, 2 and 6.etc.
+
+% Solution section contains how you approch the problem and your solution
+\section{Solution}
+
+We can make sure that as long as $n$ is more than 2 and $n$ is an even number, it will return "YES".
+
+% Code section contains your solution code
+
+\newpage
+\section{Code}
+
+\lstset{language=C++,
+        basicstyle=\ttfamily,
+        keywordstyle=\color{blue}\ttfamily,
+        stringstyle=\color{red}\ttfamily,
+        commentstyle=\color{green}\ttfamily,
+        morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int x;
+    cin >> x;
+    if (x > 2 && x % 2 == 0)
+        cout << "YES";
+    else
+        cout << "NO";
+    return 0;
+}
+
+\end{lstlisting}
+
+\end{document}

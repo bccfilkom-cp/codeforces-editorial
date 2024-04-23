@@ -1,0 +1,120 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+
+% Example : https://codeforces.com/problemset/problem/266/A 
+% So the title would be 1883B - Chemistry
+\title{1883B - Chemistry} 
+
+% Author must be your full name
+\author{Darvesh Aziz Mawla} 
+
+% Date is when you create this report
+\date{23 April 2024}
+
+\begin{document}
+
+\maketitle
+
+% There are 4 Sections, Problem, Objective, Solution, Code
+
+% Problem section contains hyperlink to the problem
+\section{Problem}
+
+Problem Description : \href{https://codeforces.com/problemset/problem/1883/B}{https://codeforces.com/problemset/problem/1883/B}
+
+% Objective section contains what is the problem's objective
+\section{Objective}
+
+We need to check if its possible to remove exactly k characters from the string given and check if its possible to rearrange the remaining characters into a palindrome
+
+A palindrome is a string that reads the same forwards and backwards. For example, the strings "z", "aaa", "aba", "abccba" are palindromes, while the strings "codeforces", "reality", "ab" are not.
+
+example :
+input :
+
+4
+
+1 0
+
+a
+
+2 0
+
+ab
+
+2 1
+
+ba
+
+3 1
+
+abb
+
+explanation :
+In the first test case, nothing can be removed, and the string "a" is a palindrome.
+
+In the second test case, nothing can be removed, but the strings "ab" and "ba" are not palindromes.
+
+In the third test case, any character can be removed, and the resulting string will be a palindrome.
+
+In the fourth test case, one occurrence of the character "a" can be removed, resulting in the string "bb", which is a palindrome.
+
+
+% Solution section contains how you approch the problem and your solution
+\section{Solution}
+
+We need to make sure there aren't too many letters appearing an odd number of times (let's call this x). If x is greater than k+1, we can't solve the problem because we can't fix it with k moves.
+
+But if x is k+1 or less, we can make it work. We just keep removing letters that appear an odd number of times until either there's only one left or none at all.
+
+So, we just need to check if x is below or equal to k+1 to check if each testcase can be solved or no.
+
+% Code section contains your solution code
+
+\newpage
+\section{Code}
+
+\lstset{language=C++,
+        basicstyle=\ttfamily,
+        keywordstyle=\color{blue}\ttfamily,
+        stringstyle=\color{red}\ttfamily,
+        commentstyle=\color{green}\ttfamily,
+        morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int t;
+    cin >> t;
+    while(t-- > 0){
+        int freq[26] = {0};
+        string s;
+        int n,k;
+        cin >> n >> k >> s;
+        for (auto &ch : s) { 
+            freq[(int)static_cast<unsigned char>( ch ) - 97]++;
+        } 
+        int oddsum = 0;
+        for(int i=0;i<26;i++){
+            if(freq[i] % 2 != 0){
+                oddsum++;
+            }   
+        }
+        if(oddsum <= k +1){
+            cout << "YES" << endl;
+        }
+        else{
+            cout << "NO" << endl;
+        }
+    }
+}
+
+\end{lstlisting}
+
+\end{document}

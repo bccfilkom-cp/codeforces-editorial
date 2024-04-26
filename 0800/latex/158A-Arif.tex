@@ -1,0 +1,80 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+
+% Example : https://codeforces.com/problemset/problem/266/A 
+% So the title would be 266A - Stones on the Table
+\title{158A - Next Round} 
+
+% Author must be your full name
+\author{Muhammad Arif Rifki} 
+
+% Date is when you create this report
+\date{17 April 2024}
+
+\begin{document}
+
+\maketitle
+
+% There are 4 Sections, Problem, Objective, Solution, Code
+
+% Problem section contains hyperlink to the problem
+\section{Problem}
+
+Problem Description : \href{https://codeforces.com/problemset/problem/158/A}{https://codeforces.com/problemset/problem/158/A}
+
+% Objective section contains what is the problem's objective
+\section{Objective}
+"Contestant who earns a score equal to or greater than the k-th place finisher's score will advance to the next round, as long as the contestant earns a positive score..." — an excerpt from contest rules.
+
+A total of n participants took part in the contest ($n \geq k$
+), and you already know their scores. Calculate how many participants will advance to the next round.
+\\\textbf{Input}
+
+The first line of the input contains two integers n and k ($1 \leq k \leq n \leq 50$) separated by a single space.
+
+The second line contains n space-separated integers $a_1, a_2, \ldots, a_n \quad (0 \leq a_i \leq 100)$
+, where $ai$ is the score earned by the participant who got the i-th place. The given sequence is non-increasing (that is, for all i from 1 to $n-1$ the following condition is fulfilled: $a_i \geq a_{i+1}$).
+\\\textbf{Output}
+
+Output the number of participants who advance to the next round.
+% Solution section contains how you approch the problem and your solution
+\section{Solution}
+
+To solve this question, we just need to create a variable to store the numbers in the k-1 array indices. then we use a loop to check each array number, whether the number in the array is more than 0, and more than or equal to the number in the array index k-1. we count it as the correct score.
+
+% Code section contains your solution code
+
+\newpage
+\section{Code}
+
+\lstset{language=C++,
+        basicstyle=\ttfamily,
+        keywordstyle=\color{blue}\ttfamily,
+        stringstyle=\color{red}\ttfamily,
+        commentstyle=\color{green}\ttfamily,
+        morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int a, b, cnt = 0;
+    cin >> a >> b;
+    int nums[a];
+    for (int i = 0; i < a; i++){
+        cin >> nums[i];
+    }
+    int core = nums[b - 1];
+    for (int i = 0; i < a; i++){
+        if (nums[i] > 0 && nums[i] >= core)
+            cnt++;
+    }
+    cout << cnt;
+    return 0;
+}
+\end{lstlisting}
+
+\end{document}

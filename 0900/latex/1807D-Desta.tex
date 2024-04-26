@@ -1,0 +1,147 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+
+\title{1807D - Odd Queries} 
+
+% Author must be your full name
+\author{Ferrel Destatiananda Edwardo} 
+
+% Date is when you create this report
+\date{23 April 2024}
+
+\begin{document}
+
+\maketitle
+
+% There are 4 Sections, Problem, Objective, Solution, Code
+
+% Problem section contains hyperlink to the problem
+\section{Problem}
+
+Problem Description : \href{https://codeforces.com/problemset/problem/1807/D}{https://codeforces.com/problemset/problem/1807/D}
+
+% Objective section contains what is the problem's objective
+\section{Objective}
+
+The objective of this problem is to determine whether changing all elements in specified ranges of an array to a given value will result in the sum of the entire array being odd.
+
+% Solution section contains how you approch the problem and your solution
+\section{Solution}
+The solution is using segment tree.
+1. Initialize a segment tree with the given array.
+2. When we input the array, we compute the sum of all elements in the array.
+3. For every query, we first subtract the sum of elements within the query range from the total initial sum of the array and we the replacements.
+4. Combining these steps, we obtain the sum of the entire array after applying the replacements, represented as (sum - query + replacements).
+4. If the sum of query is odd, we output "YES". Otherwise, we output "NO".
+
+% Code section contains your solution code
+
+\newpage
+\section{Code}
+
+\lstset{language=C++,
+        basicstyle=\ttfamily,
+        keywordstyle=\color{blue}\ttfamily,
+        stringstyle=\color{red}\ttfamily,
+        commentstyle=\color{green}\ttfamily,
+        morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+#include<bits/stdc++.h>
+
+using namespace std;
+
+struct segmenttree {
+	int n;
+	vector<int> st;
+
+	void init(int _n) {
+		this->n = _n;
+		st.resize(4 * n, 0);
+	}
+
+	void build(int start, int ending, int node, vector<int> &v) {
+		// leaf node base case
+		if (start == ending) {
+			st[node] = v[start];
+			return;
+		}
+
+		int mid = (start + ending) / 2;
+
+		// left subtree is (start,mid)
+		build(start, mid, 2 * node + 1, v);
+
+		// right subtree is (mid+1,ending)
+		build(mid + 1, ending, 2 * node + 2, v);
+
+		st[node] = st[node * 2 + 1] + st[node * 2 + 2];
+	}
+
+	int query(int start, int ending, int l, int r, int node) {
+		// non overlapping case
+		if (start > r || ending < l) {
+			return 0;
+		}
+
+		// complete overlap
+		if (start >= l && ending <= r) {
+			return st[node];
+		}
+
+		// partial case
+		int mid = (start + ending) / 2;
+
+		int q1 = query(start, mid, l, r, 2 * node + 1);
+		int q2 = query(mid + 1, ending, l, r, 2 * node + 2);
+
+		return q1 + q2;
+	}
+
+
+	void build(vector<int> &v) {
+		build(0, n - 1, 0, v);
+	}
+
+	int query(int l, int r) {
+		return query(0, n - 1, l, r, 0);
+	}
+
+};
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n, q;
+        cin >> n >> q;
+        vector<int> v(n);
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            cin >> v[i];
+            sum += v[i];
+        }
+
+        segmenttree tree;
+        tree.init(n);
+        tree.build(v);
+
+        for (int i = 0; i < q; i++) {
+            int l, r, k;
+            cin >> l >> r >> k;
+            if ((sum - tree.query(l - 1, r - 1) + k * (r - l + 1)) % 2 != 0) {
+                cout << "YES" << endl;
+            } else {
+                cout << "NO" << endl;
+            }
+        }
+    }
+    return 0;
+}
+
+\end{lstlisting}
+
+\end{document}

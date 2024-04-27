@@ -1,0 +1,74 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+
+% Example : https://codeforces.com/problemset/problem/266/A 
+% So the title would be 266A - Stones on the Table
+\title{1A - Theatre Square} 
+
+% Author must be your full name
+\author{Deon Marshal} 
+
+% Date is when you create this report
+\date{24 April 2024}
+
+\begin{document}
+
+\maketitle
+
+% There are 4 Sections, Problem, Objective, Solution, Code
+
+% Problem section contains hyperlink to the problem
+\section{Problem}
+
+Problem Description : \href{https://codeforces.com/problemset/problem/1/A}
+
+% Objective section contains what is the problem's objective
+\section{Objective}
+
+Find out the minimum number of square flagstones that can completely cover a rectangular theater square, without having to cut the flagstone
+Example : 
+a 6 x 5 theater square requires a minimum of 9 square flagstones to cover it completely even if there are parts of the flagstone that exceed the edge of the theater square
+
+% Solution section contains how you approch the problem and your solution
+\section{Solution}
+
+simply put, we only need to use a basic mathematical implementation where if a square area is to be fitted with a square to cover it, 
+the length of the wide side and long side of the theater square will be divided by the length of the wide side and long side of the flagstone, 
+but because the flagstone is square the difference in length and The width of the flagstone will be ignored. 
+Before multiplying the two results to find the total flagstones needed, 
+we need to round up the division result because we want to make sure all areas are covered with the number of flagstones as the minimum value.
+% Code section contains your solution code
+
+\newpage
+\section{Code}
+
+\lstset{language=C++,
+        basicstyle=\ttfamily,
+        keywordstyle=\color{blue}\ttfamily,
+        stringstyle=\color{red}\ttfamily,
+        commentstyle=\color{green}\ttfamily,
+        morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+
+#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+using namespace std;
+
+int main() {
+long long n,m,a;
+cin>>n>>m>>a;
+long long ans=ceil((double)m/a)*ceil((double)n/a);
+cout<<ans ;
+return 0;
+}
+
+\end{lstlisting}
+
+\end{document}

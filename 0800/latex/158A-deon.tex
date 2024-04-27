@@ -1,0 +1,82 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+
+% Example : https://codeforces.com/problemset/problem/266/A 
+% So the title would be 266A - Stones on the Table
+\title{158A - Next Round} 
+
+% Author must be your full name
+\author{Deon Marshal} 
+
+% Date is when you create this report
+\date{14 April 2024}
+
+\begin{document}
+
+\maketitle
+
+% There are 4 Sections, Problem, Objective, Solution, Code
+
+% Problem section contains hyperlink to the problem
+\section{Problem}
+
+Problem Description : \href{https://codeforces.com/problemset/problem/158/A}
+
+% Objective section contains what is the problem's objective
+\section{Objective}
+
+Calculates how many participants will advance to the next round, where the minimum score is determined from the score of one participant with a ranking determined by the user.
+Example : 
+
+If the third ranked participant is the limit for qualifying, then participants whose score is more or equal to the score of the third ranked participant can pass to the next stage.
+
+% Solution section contains how you approch the problem and your solution
+\section{Solution}
+
+The solution is carried out using brute force techniques and the list of participants with their points will be stored in an array.
+Limit ps will be set to pass and then at each iteration a check will be made to find out how many points are greater than the limit points. 
+At the end, it was printed that there were many qualified participants.
+% Code section contains your solution code
+
+\newpage
+\section{Code}
+
+\lstset{language=C++,
+        basicstyle=\ttfamily,
+        keywordstyle=\color{blue}\ttfamily,
+        stringstyle=\color{red}\ttfamily,
+        commentstyle=\color{green}\ttfamily,
+        morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+
+#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+using namespace std;
+
+int main() {
+int n,k;
+cin>>n>>k;
+int arr[n];
+int ans=0;
+for(int i=0;i<n;i++){
+    cin>>arr[i];
+}
+int poinK=arr[k-1];
+for(int i=0;i<n;i++){
+    if(arr[i]>=poinK && arr[i])
+    ++ans;
+}
+cout<<ans;
+    return 0;
+}
+
+\end{lstlisting}
+
+\end{document}

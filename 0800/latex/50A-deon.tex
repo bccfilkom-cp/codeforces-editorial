@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+
+% Example : https://codeforces.com/problemset/problem/266/A 
+% So the title would be 266A - Stones on the Table
+\title{50A - Domino piling} 
+
+% Author must be your full name
+\author{Deon Marshal} 
+
+% Date is when you create this report
+\date{14 April 2024}
+
+\begin{document}
+
+\maketitle
+
+% There are 4 Sections, Problem, Objective, Solution, Code
+
+% Problem section contains hyperlink to the problem
+\section{Problem}
+
+Problem Description : \href{https://codeforces.com/problemset/problem/50/A}
+
+% Objective section contains what is the problem's objective
+\section{Objective}
+
+To find out how many dominoes with a size of 2 x 1 can be used to cover a box measuring m x n, where the domino part must not cross the edge of the box
+Example : 
+
+m & n are 2 & 4
+then the maximum number of dominoes needed is 4 to cover the surface of the box even though there is 1 x 1 more box that is not covered
+
+% Solution section contains how you approch the problem and your solution
+\section{Solution}
+
+By allowing dominoes to be rotated vertically and horizontally, the placement of dominoes with a size of 2 x 1 will not be limited by mismatched positions. So, we can calculate it by dividing the area of the domino by rounding down.
+% Code section contains your solution code
+
+\newpage
+\section{Code}
+
+\lstset{language=C++,
+        basicstyle=\ttfamily,
+        keywordstyle=\color{blue}\ttfamily,
+        stringstyle=\color{red}\ttfamily,
+        commentstyle=\color{green}\ttfamily,
+        morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+
+#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+using namespace std;
+
+int main() {
+     int n,k;
+     cin>>n>>k;
+     cout<<(n*k)/2;
+    return 0;
+}
+
+\end{lstlisting}
+
+\end{document}

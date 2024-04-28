@@ -1,0 +1,95 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+
+% Example : https://codeforces.com/problemset/problem/266/A 
+% So the title would be 1955C - Inhabitant of the Deep Sea
+\title{1955C - Inhabitant of the Deep Sea
+} 
+
+% Author must be your full name
+\author{Darvesh Aziz Mawla} 
+
+% Date is when you create this report
+\date{28 April 2024}
+
+\begin{document}
+
+\maketitle
+
+% There are 4 Sections, Problem, Objective, Solution, Code
+
+% Problem section contains hyperlink to the problem
+\section{Problem}
+
+Problem Description : \href{https://codeforces.com/problemset/problem/1955/C}{https://codeforces.com/problemset/problem/1955/C}
+
+% Objective section contains what is the problem's objective
+\section{Objective}
+
+Check how many ships sunk after the kraken finished attacking 
+The Kraken attacked the ships k
+ times in a specific order. First, it attacks the first of the ships, then the last, then the first again, and so on.
+
+Each attack by the Kraken reduces the durability of the ship by 1
+. When the durability of the ship drops to 0
+, it sinks and is no longer subjected to attacks (thus the ship ceases to be the first or last, and the Kraken only attacks the ships that have not yet sunk). If all the ships have sunk, the Kraken has nothing to attack and it swims away.
+
+% Solution section contains how you approch the problem and your solution
+\section{Solution}
+
+First we lalbel the durability of the first and last ship as al and ar, let m = min(al,ar),  After two attacks, the durability of both ships decreases by 1. k≥2⋅m, then both ships have their durability reduced by m, and the remaining attacks of the Kraken are decreased by 2⋅m. If k<2⋅m, the Kraken will inflict k/2 damage to the r-th ship. If k is odd, the l-th ship will receive k/2 + 1 damage. otherwise, it will receive k/2 damage. repeat until l = r and check if the kraken can sink the last ship
+
+% Code section contains your solution code
+
+\newpage
+\section{Code}
+
+\lstset{language=C++,
+        basicstyle=\ttfamily,
+        keywordstyle=\color{blue}\ttfamily,
+        stringstyle=\color{red}\ttfamily,
+        commentstyle=\color{green}\ttfamily,
+        morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int t;
+    cin >> t;
+    while(t-- > 0){
+        int n;
+        signed long long int k;
+        cin >> n >> k;
+        int arr[n] = {0};
+        for(int i=0;i<n;i++){
+            cin >> arr[i];
+        }
+        int s=0,e=n-1;
+        while((e-s+1) > 1 && k > 0){
+            signed long long int m = min(arr[s],arr[e]);
+            if (k < 2 * m) {
+                arr[s] -= k / 2 + k % 2;
+                arr[e] -= k / 2;
+                k = 0;
+            } 
+            else {
+                arr[s] -= m;
+                arr[e] -= m;
+                k -= 2 * m;
+            }
+            if (arr[s] == 0) s++;
+            if (arr[e] == 0) e--;
+        }
+        cout << n - (e-s+1) + ((e-s+1) && arr[s] <= k) << endl;
+    }
+}
+
+\end{lstlisting}
+
+\end{document}

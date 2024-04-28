@@ -1,0 +1,97 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+
+% Example : https://codeforces.com/problemset/problem/266/A 
+% So the title would be 1955B - Progressive Square
+\title{1955B - Progressive Square
+} 
+
+% Author must be your full name
+\author{Darvesh Aziz Mawla} 
+
+% Date is when you create this report
+\date{28 April 2024}
+
+\begin{document}
+
+\maketitle
+
+% There are 4 Sections, Problem, Objective, Solution, Code
+
+% Problem section contains hyperlink to the problem
+\section{Problem}
+
+Problem Description : \href{https://codeforces.com/problemset/problem/1955/C}{https://codeforces.com/problemset/problem/1955/B}
+
+% Objective section contains what is the problem's objective
+\section{Objective}
+
+For each test case, output "YES" in a separate line if a progressive square for the given n c and d can be constructed from the array elements a otherwise output "NO".
+
+% Solution section contains how you approch the problem and your solution
+\section{Solution}
+
+Since c>0 and d>0, the elements of the square increase starting from the top left corner. Therefore, a 1,1 is the minimum element in the square and consequently among the found elements. Given 
+n,  c,  d, and the value of a 1,1, we can reconstruct the square. To verify that the given numbers in the input form the same square, we can simply sort both arrays of numbers and check for equality.
+
+% Code section contains your solution code
+
+\newpage
+\section{Code}
+
+\lstset{language=C++,
+        basicstyle=\ttfamily,
+        keywordstyle=\color{blue}\ttfamily,
+        stringstyle=\color{red}\ttfamily,
+        commentstyle=\color{green}\ttfamily,
+        morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+
+#include<bits/stdc++.h>
+using namespace std;
+
+bool areEqual(int arr1[], int arr2[], int N, int M)
+{
+    unordered_map<int, int> mp;
+    for (int i = 0; i < N; i++){
+        mp[arr1[i]]++;
+    }
+    for (int i = 0; i < N; i++) {
+        if (mp.find(arr2[i]) == mp.end())return false;
+        if (mp[arr2[i]] == 0)return false;
+        mp[arr2[i]]--;
+    }
+    return true;
+}
+
+int main(){
+    int t;
+    cin >> t;
+    while(t-- > 0){
+        int n,c,d,a11=2147483647;
+        cin >> n >> c >> d;
+        int arr[n*n] = {0};
+        for(int i=0;i<n*n;i++){
+            cin >> arr[i];
+            a11 = min(a11,arr[i]);
+        }
+        int re[n*n] = {0};
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                re[(i*n) + j] = a11 + (i * c) + (j * d);
+            }
+        }
+        int N = sizeof(arr) / sizeof(int);
+        int M = sizeof(re) / sizeof(int);
+        if (areEqual(arr, re, N, M)) cout << "YES" << endl;
+        else cout << "NO" << endl;
+    }
+}
+
+\end{lstlisting}
+
+\end{document}

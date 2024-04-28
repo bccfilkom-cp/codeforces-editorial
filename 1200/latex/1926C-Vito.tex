@@ -1,0 +1,80 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{xcolor}
+
+
+\title{1926C - Vlad and a Sum of Sum of Digits} 
+
+% Author must be your full name
+\author{Vito Randy Gunawan} 
+
+% Date is when you create this report
+\date{28 April 2024}
+
+\begin{document}
+
+\maketitle
+
+% There are 4 Sections, Problem, Objective, Solution, Code
+
+% Problem section contains hyperlink to the problem
+\section{Problem}
+
+Problem Description : \href{https://codeforces.com/contest/1926/problem/C}{https://codeforces.com/contest/1926/problem/C}
+
+% Objective section contains what is the problem's objective
+\section{Objective}
+
+Given $t$ numbers of $n$, find the sum of digits of number $n$ of the $n$ first numbers for every given number $n$.
+
+% Solution section contains how you approch the problem and your solution
+\section{Solution}
+
+We iterate from $1$ to $n$ to find the sum of sum of the digits of every number $n$. We can use modulus and division operation to extract each digit of the number $n$, then sum all the digits. we can use prefix sum array to store the answer so that we don't need to find the sum of digits of $n$ previous numbers all over again. For example, if the given number $n$ is $11$, then the sum of the digits for every $n$ first numbers is $1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2$. So the answer is $48$.
+% Code section contains your solution code
+
+\newpage
+\section{Code}
+
+
+\lstset{language=C++,
+        basicstyle=\ttfamily,
+        keywordstyle=\color{blue}\ttfamily,
+        stringstyle=\color{red}\ttfamily,
+        commentstyle=\color{green}\ttfamily,
+        morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+
+#include <iostream>
+#include <cmath>
+#include <vector>
+#include <algorithm>
+using namespace std;
+const int P = 1e9 + 7;
+ 
+ int main() {
+ 	vector <int> dp(2e5+1, -1);
+ 	int sum = 0;
+	for(int i=1; i<=2e5; i++) {
+		sum += i%10 + i/10%10 + i/100%10 + i/1000%10 + i/10000%10
+                + i/100000%10;
+		dp[i] = sum;
+	}
+ 
+	int t;
+ 	cin >> t;
+ 	while(t--){
+ 		int n;
+ 		cin >> n;
+ 		cout << dp[n] << endl;
+ 	}
+ 	return 0;
+ }
+ 
+\end{lstlisting}
+
+\end{document}

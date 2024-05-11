@@ -1,0 +1,69 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{xcolor}
+
+
+\title{122A - Lucky Division} 
+
+% Author must be your full name
+\author{Vito Randy Gunawan} 
+
+% Date is when you create this report
+\date{11 Mei 2024}
+
+\begin{document}
+
+\maketitle
+
+% There are 4 Sections, Problem, Objective, Solution, Code
+
+% Problem section contains hyperlink to the problem
+\section{Problem}
+
+Problem Description : \href{https://codeforces.com/contest/122/problem/A}{https://codeforces.com/contest/122/problem/A}
+
+% Objective section contains what is the problem's objective
+\section{Objective}
+
+Given single integer $n$, decide whether that integer considered as lucky number or not. A number is considered to be lucky if that number only contain either 4 or 7. If it's not satisfy the condition, then the number is considered to be almost lucky if that number is divisible by some lucky number. For example, number 47 is a lucky number whereas 48 is not. 94 is an almost lucky number because it's divisible by 47. Print "YES" if $n$ is lucky or at least almost lucky number. Else, print "NO.
+
+% Solution section contains how you approch the problem and your solution
+\section{Solution}
+
+We can use brute force approach to find every possible solution by checking whether the given integer $n$ is divisible by 4, 7, 47, 74, 447, 474, 477, 744, 747, or 774. We don't need to check if $n$ is divisible by 77 since 77 is also divisible by 7.
+% Code section contains your solution code
+
+\newpage
+\section{Code}
+
+
+\lstset{language=C++,
+        basicstyle=\ttfamily,
+        keywordstyle=\color{blue}\ttfamily,
+        stringstyle=\color{red}\ttfamily,
+        commentstyle=\color{green}\ttfamily,
+        morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    int n;
+    cin >> n;
+    if(n%4==0 || n%7==0 || n%47==0 || n%74==0 || n%447==0 || n%474==0 
+        || n%477==0 || n%744==0 || n%747==0 || n%774==0) {
+        cout << "YES"; 
+        return 0;
+    }
+    else cout <<"NO";
+    return 0;
+}
+ 
+\end{lstlisting}
+
+\end{document}

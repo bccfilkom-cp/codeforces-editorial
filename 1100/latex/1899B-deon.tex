@@ -1,0 +1,104 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+
+% Example : https://codeforces.com/problemset/problem/266/A 
+% So the title would be 266A - Stones on the Table
+\title{1899B - 250 Thousand Tons of TNT} 
+
+% Author must be your full name
+\author{Deon Marshal} 
+
+% Date is when you create this report
+\date{24 April 2024}
+
+\begin{document}
+
+\maketitle
+
+% There are 4 Sections, Problem, Objective, Solution, Code
+
+% Problem section contains hyperlink to the problem
+\section{Problem}
+
+Problem Description : \href{https://codeforces.com/problemset/problem/1899/B}
+
+% Objective section contains what is the problem's objective
+\section{Objective}
+
+Look for the largest difference in the mass of TNT boxes carried by each truck in line
+The placement of each box has a different mass, but each truck must carry the same number of boxes. 
+The program is asked to analyze all possibilities and look for events where two trucks have a maximum mass difference with the appropriate event conditions.
+Example : 
+
+6 boxes with a mass of 10 2 3 6 1 3, when transported on a truck the biggest difference between trucks is 9 where each truck lifts 1 box and the first truck will have a difference of 9 with the fifth truck
+
+% Solution section contains how you approch the problem and your solution
+\section{Solution}
+
+The solution uses a brute force technique where the program will look for differences in each iteration. 
+The first iteration is to ensure that each truck will carry the same number of boxes, which means the modulo value is 0 in each iteration. 
+Then the second repetition looks for the difference between each box and the box after it which will be stored in one vector. 
+To make calculations easier, a vector containing the cumulative number of boxes is previously prepared so that when searching for the difference, 
+the program does not take too long to count the boxes one by one again.
+For the largest difference result, simply sort the difference vector and then call the first value of the vector. 
+This value will be compared again in the next iteration
+% Code section contains your solution code
+
+\newpage
+\section{Code}
+
+\lstset{language=C++,
+        basicstyle=\ttfamily,
+        keywordstyle=\color{blue}\ttfamily,
+        stringstyle=\color{red}\ttfamily,
+        commentstyle=\color{green}\ttfamily,
+        morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+
+#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n, resMax = 0;
+        cin >> n;
+        vector<int> kumulatif;
+        int sum = 0;
+        kumulatif.push_back(0);
+        for (int i = 0; i < n; i++) {
+            int b;
+            cin >> b;
+            if(b==0) b = 1;
+            sum += b;
+            kumulatif.push_back(sum);
+        }
+
+        for (int i = 1; i <= n; ++i) {
+            vector<int> selisih;
+            if (n % i == 0) {
+                for (int j = i; j <= n; j += i) {
+                    int sum = kumulatif[j] - kumulatif[j - i];
+                    selisih.push_back(sum);
+                }
+                sort(selisih.begin(), selisih.end());
+                resMax = max(resMax, selisih[selisih.size() - 1] - selisih[0]);
+            }
+        }
+
+        cout << resMax << endl;
+    }
+    return 0;
+}
+
+\end{lstlisting}
+
+\end{document}

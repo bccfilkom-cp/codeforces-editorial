@@ -1,0 +1,74 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+
+% Example : https://codeforces.com/problemset/problem/266/A 
+% So the title would be 266A - Stones on the Table
+\title{4A - Watermelon} 
+
+% Author must be your full name
+\author{Deon Marshal} 
+
+% Date is when you create this report
+\date{14 April 2024}
+
+\begin{document}
+
+\maketitle
+
+% There are 4 Sections, Problem, Objective, Solution, Code
+
+% Problem section contains hyperlink to the problem
+\section{Problem}
+
+Problem Description : \href{https://codeforces.com/contest/4/problem/A}
+
+% Objective section contains what is the problem's objective
+\section{Objective}
+
+The objective of this problem is literally simple, determine yes or no to the mass of the watermelon which can be divided into two parts with an even mass.
+
+Example : 
+
+$w$ = 8
+then the output is YES because 8 can be divided into 44 or 62 and so on
+
+% Solution section contains how you approch the problem and your solution
+\section{Solution}
+
+using the usual implementation of if else where the mass that satisfies must be a mass with an even number greater than 2.
+% Code section contains your solution code
+
+\newpage
+\section{Code}
+
+\lstset{language=C++,
+        basicstyle=\ttfamily,
+        keywordstyle=\color{blue}\ttfamily,
+        stringstyle=\color{red}\ttfamily,
+        commentstyle=\color{green}\ttfamily,
+        morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+
+#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main(){
+    int w;
+    cin>>w;
+    if (w>2 && w%2==0){
+        cout << "YES";
+    }else
+        cout << "NO";
+    return 0;
+}
+
+\end{lstlisting}
+
+\end{document}

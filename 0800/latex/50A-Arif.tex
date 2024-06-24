@@ -1,0 +1,84 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+
+% Example : https://codeforces.com/problemset/problem/266/A 
+% So the title would be 266A - Stones on the Table
+\title{50A - Domino piling} 
+
+% Author must be your full name
+\author{Muhammad Arif Rifki} 
+
+% Date is when you create this report
+\date{1 May 2024}
+
+\begin{document}
+
+\maketitle
+
+% There are 4 Sections, Problem, Objective, Solution, Code
+
+% Problem section contains hyperlink to the problem
+\section{Problem}
+
+Problem Description : \href{https://codeforces.com/problemset/problem/50/A}{https://codeforces.com/problemset/problem/50/A}
+
+% Objective section contains what is the problem's objective
+\section{Objective}
+You are given a rectangular board of M × N squares. Also you are given an unlimited number of standard domino pieces of 2 × 1 squares. You are allowed to rotate the pieces. You are asked to place as many dominoes as possible on the board so as to meet the following conditions:
+
+
+1. Each domino completely covers two squares.
+
+2. No two dominoes overlap.
+
+3. Each domino lies entirely inside the board. It is allowed to touch the edges of the board.
+
+Find the maximum number of dominoes, which can be placed under these restrictions.
+\\\textbf{Input}
+
+In a single line you are given two integers M and N — board sizes in squares \(1 \leq M \leq N \leq 16\).
+
+
+\\\textbf{Output}
+
+Output one number — the maximal number of dominoes, which can be placed.
+
+% Solution section contains how you approch the problem and your solution
+\section{Solution}
+
+The solution to this problem is, you have to find a multiple of 2 that is close to and less than or equal to $m x n$
+
+% Code section contains your solution code
+
+\newpage
+\section{Code}
+
+\lstset{language=C++,
+        basicstyle=\ttfamily,
+        keywordstyle=\color{blue}\ttfamily,
+        stringstyle=\color{red}\ttfamily,
+        commentstyle=\color{green}\ttfamily,
+        morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int m, n, cnt = 0, temp = 0;
+    cin >> m >> n;
+    while (m * n >= temp + 2)
+    {
+        temp += 2;
+        cnt++;
+    }
+    cout << cnt;
+    return 0;
+}
+
+\end{lstlisting}
+
+\end{document}
